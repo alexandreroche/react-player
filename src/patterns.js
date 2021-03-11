@@ -20,27 +20,7 @@ export const DASH_EXTENSIONS = /\.(mpd)($|\?)/i
 export const FLV_EXTENSIONS = /\.(flv)($|\?)/i
 
 const canPlayFile = url => {
-  if (url instanceof Array) {
-    for (const item of url) {
-      if (typeof item === 'string' && canPlayFile(item)) {
-        return true
-      }
-      if (canPlayFile(item.src)) {
-        return true
-      }
-    }
-    return false
-  }
-  if (isMediaStream(url) || isBlobUrl(url)) {
-    return true
-  }
-  return (
-    AUDIO_EXTENSIONS.test(url) ||
-    VIDEO_EXTENSIONS.test(url) ||
-    HLS_EXTENSIONS.test(url) ||
-    DASH_EXTENSIONS.test(url) ||
-    FLV_EXTENSIONS.test(url)
-  )
+  return true;
 }
 
 export const canPlay = {
